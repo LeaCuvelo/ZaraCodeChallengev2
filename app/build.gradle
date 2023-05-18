@@ -1,0 +1,129 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+def retrofit_version = '2.9.0'
+def gson_version = '2.9.1'
+def lifecycleviewmodel_version = '2.6.1'
+def activityktx_version = '1.7.1'
+def hilt_version = '2.44'
+def mockito_version = '4.7.0'
+def mockitokotlin_version = '4.0.0'
+def archcore_version = '2.2.0'
+def coroutinetest_version = '1.6.4'
+def navigation_version = '2.5.3'
+def room_version = "2.5.1"
+def splash_version = "1.0.1"
+def picasso_version = "2.71828"
+def mokk_version = "1.13.2"
+def pagination_version = "3.1.1"
+def lottieVersion = "6.0.0"
+
+
+
+android {
+    namespace 'com.zara.cuvelo.codechallenge'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.zara.cuvelo.codechallenge"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    //Core - Material - ConstraintLayout
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //Splash
+    implementation "androidx.core:core-splashscreen:$splash_version"
+
+    //Retrofit, Gson - Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    //Lifecycle Viewmodel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleviewmodel_version"
+
+    //KTX Extensions
+    implementation "androidx.activity:activity-ktx:$activityktx_version"
+
+    //DI - Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //Pagination
+    implementation "androidx.paging:paging-common-ktx:$pagination_version"
+    implementation "androidx.paging:paging-runtime-ktx:$pagination_version"
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    //DB - Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //Test
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitokotlin_version"
+    testImplementation "androidx.arch.core:core-testing:$archcore_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinetest_version"
+
+    //AndroidTest
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+
+    //Mokk
+    testImplementation "io.mockk:mockk:$mokk_version"
+}

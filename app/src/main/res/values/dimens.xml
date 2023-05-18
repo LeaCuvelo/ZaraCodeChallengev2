@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash -->
+    <dimen name="splash_inset_value">52dp</dimen>
+
+    <!-- Home -->
+    <dimen name="home_item_height">200dp</dimen>
+    <dimen name="character_item_title_text_size">28sp</dimen>
+    <dimen name="home_item_margin">10dp</dimen>
+    <dimen name="home_item_name_margin_top">8dp</dimen>
+    <dimen name="home_title_margin_top">12dp</dimen>
+    <dimen name="home_list_margin_top">5dp</dimen>
+    <dimen name="home_title_text_size">32sp</dimen>
+    <dimen name="home_item_max_width">180dp</dimen>
+    <dimen name="home_animation_view_height">150dp</dimen>
+    <dimen name="home_animation_view_margin_top">10dp</dimen>
+    <dimen name="home_item_name_padding_start_end">8dp</dimen>
+    <dimen name="home_item_end_guideline_percent" format="float" type="dimen">0.95</dimen>
+    <dimen name="home_item_end_image" format="float" type="dimen">0.46</dimen>
+    <dimen name="character_item_status_species_text_size">18sp</dimen>
+    <dimen name="home_item_status_species_margin_top">12dp</dimen>
+
+
+    <!-- Detail -->
+
+
+</resources>

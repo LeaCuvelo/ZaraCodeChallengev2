@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_background"
+        tools:context=".ui.home.HomeActivity">
+
+        <TextView
+            android:id="@+id/tv_rick_morty_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/item_name_font_color"
+            android:fontFamily="@font/get_schwifty"
+            android:paddingStart="@dimen/home_item_name_padding_start_end"
+            android:paddingEnd="@dimen/home_item_name_padding_start_end"
+            android:background="@drawable/item_name_background"
+            android:layout_marginTop="@dimen/home_title_margin_top"
+            android:text="@string/home_title"
+            android:textSize="@dimen/home_title_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_header_animation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/home_animation_view_height"
+            android:layout_marginTop="@dimen/home_animation_view_margin_top"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:lottie_rawRes="@raw/portal"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            android:layout_marginTop="@dimen/home_list_margin_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lav_header_animation"
+            app:navGraph="@navigation/navigation_graph" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

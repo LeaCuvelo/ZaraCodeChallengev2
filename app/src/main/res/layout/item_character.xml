@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="character"
+            type="com.zara.cuvelo.codechallenge.domain.CharacterDomain" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/item_background"
+        android:layout_margin="@dimen/home_item_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_item_height">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/home_item_end_guideline_percent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g_image_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/home_item_end_image" />
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:background="@drawable/item_name_background"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/item_name_font_color"
+            android:text="@{character.component2()}"
+            android:maxWidth="@dimen/home_item_max_width"
+            android:layout_marginTop="@dimen/home_item_name_margin_top"
+            android:gravity="center"
+            android:paddingStart="@dimen/home_item_name_padding_start_end"
+            android:paddingEnd="@dimen/home_item_name_padding_start_end"
+            app:layout_constraintEnd_toStartOf="@+id/g_end"
+            android:fontFamily="@font/get_schwifty"
+            android:textSize="@dimen/character_item_title_text_size"
+            tools:text="@string/item_name_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_status"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintEnd_toStartOf="@+id/g_end"
+            tools:text="@string/item_status_placeholder"
+            android:textStyle="bold"
+            android:textSize="@dimen/character_item_status_species_text_size"
+            android:layout_marginTop="@dimen/home_item_status_species_margin_top"
+            android:text="@{character.component3()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_species"
+            app:layout_constraintTop_toBottomOf="@+id/tv_status"
+            app:layout_constraintEnd_toStartOf="@+id/g_end"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/character_item_status_species_text_size"
+            tools:text="@string/item_species_placeholder"
+            android:layout_marginTop="@dimen/home_item_status_species_margin_top"
+            android:text="@{character.component4()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_for_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/g_image_end"
+            android:layout_margin="10dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="100dp">
+
+            <ImageView
+                android:id="@+id/iv_rounded_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_character_placeholder"
+                android:contentDescription="@string/item_photo_content_description" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>
+

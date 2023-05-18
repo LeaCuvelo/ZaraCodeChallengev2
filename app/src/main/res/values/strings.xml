@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ZaraCodeChallengeCuvelo</string>
+
+    <!-- Home -->
+    <string name="home_error_loading_characters">Error Loading characters, please try again later</string>
+    <string name="item_name_placeholder">Rick Sanchez</string>
+    <string name="item_status_placeholder">Alive</string>
+    <string name="item_species_placeholder">Human</string>
+    <string name="home_title">Rick and Morty Characters</string>
+    <string name="item_photo_content_description">Character photo</string>
+
+
+
+
+</resources>
