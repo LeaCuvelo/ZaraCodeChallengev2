@@ -1,6 +1,6 @@
 package com.zara.cuvelo.codechallenge.di
 
-import com.cuvelo.data.repositories.CharacterRepository
+import com.zara.cuvelo.codechallenge.repositories.repositories.CharacterRepository
 import com.zara.cuvelo.codechallenge.usecases.GetCharactersUseCase
 import dagger.Module
 import dagger.Provides

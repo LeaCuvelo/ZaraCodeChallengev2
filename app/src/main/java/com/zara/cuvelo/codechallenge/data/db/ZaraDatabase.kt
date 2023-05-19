@@ -4,11 +4,11 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.zara.cuvelo.codechallenge.data.db.dao.CharacterDAO
 import com.zara.cuvelo.codechallenge.data.db.dao.RemoteKeysDao
-import com.zara.cuvelo.codechallenge.data.db.entity.CharacterEntity
+import com.zara.cuvelo.codechallenge.data.db.entity.Character
 import com.zara.cuvelo.codechallenge.data.db.entity.RemoteKeys
 
 @Database(
-    entities = [CharacterEntity::class, RemoteKeys::class],
+    entities = [Character::class, RemoteKeys::class],
     version = 1)
 
 

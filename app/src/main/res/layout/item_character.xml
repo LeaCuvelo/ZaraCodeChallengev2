@@ -11,7 +11,7 @@
 
         <variable
             name="character"
-            type="com.zara.cuvelo.codechallenge.domain.CharacterDomain" />
+            type="com.zara.cuvelo.codechallenge.data.db.entity.Character" />
 
     </data>
 

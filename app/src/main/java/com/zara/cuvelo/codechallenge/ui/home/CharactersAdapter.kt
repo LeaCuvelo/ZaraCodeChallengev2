@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.zara.cuvelo.codechallenge.R
+import com.zara.cuvelo.codechallenge.data.db.entity.Character
 import com.zara.cuvelo.codechallenge.databinding.ItemCharacterBinding
-import com.zara.cuvelo.codechallenge.domain.CharacterDomain
 
-class CharactersAdapter  : PagingDataAdapter<CharacterDomain, CharactersAdapter.CharacterViewHolder>(DiffUtilCallBack()) {
+class CharactersAdapter  : PagingDataAdapter<Character, CharactersAdapter.CharacterViewHolder>(DiffUtilCallBack()) {
 
     private lateinit var binding: ItemCharacterBinding
 
@@ -27,12 +27,10 @@ class CharactersAdapter  : PagingDataAdapter<CharacterDomain, CharactersAdapter.
 
     inner class CharacterViewHolder(private val binding: ItemCharacterBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(character: CharacterDomain) {
+        fun bind(character: Character) {
             binding.character = character
-
-            //https://rickandmortyapi.com/api/character/avatar/1.jpeg
             Picasso.get()
-                .load(character.photo)
+                .load(character.photoUrl)
                 .placeholder(R.drawable.ic_character_placeholder)
                 .error(R.drawable.ic_error)
                 .into(binding.ivRoundedPhoto)
@@ -44,13 +42,13 @@ class CharactersAdapter  : PagingDataAdapter<CharacterDomain, CharactersAdapter.
 
     //region DiffCallback
 
-    class DiffUtilCallBack : DiffUtil.ItemCallback<CharacterDomain>(){
+    class DiffUtilCallBack : DiffUtil.ItemCallback<Character>(){
 
-        override fun areItemsTheSame(oldItem: CharacterDomain, newItem: CharacterDomain): Boolean {
+        override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
             return oldItem.name == newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: CharacterDomain, newItem: CharacterDomain): Boolean {
+        override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
             return oldItem == newItem
         }
 

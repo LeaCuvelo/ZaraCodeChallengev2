@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.zara.cuvelo.codechallenge.domain.CharacterDomain
+import com.zara.cuvelo.codechallenge.data.db.entity.Character
 import com.zara.cuvelo.codechallenge.usecases.GetCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +17,6 @@ class HomeViewModel @Inject constructor(
 
     private val TAG = "HomeViewModel"
 
-    fun getCharacters(): Flow<PagingData<CharacterDomain>> = getCharactersUseCase.invoke().cachedIn(viewModelScope)
+    fun getCharacters(): Flow<PagingData<Character>> = getCharactersUseCase.invoke().cachedIn(viewModelScope)
 
 }

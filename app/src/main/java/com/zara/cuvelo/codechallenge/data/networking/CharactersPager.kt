@@ -4,16 +4,15 @@ import android.net.Uri
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.zara.cuvelo.codechallenge.data.db.entity.Character
 import com.zara.cuvelo.codechallenge.data.formatAvatarUrl
-import com.zara.cuvelo.codechallenge.data.model.CharacterModel
-import com.zara.cuvelo.codechallenge.domain.CharacterDomain
 import java.lang.Exception
 
-class CharactersPager(private val characterRemoteServer: CharacterRemoteServer) : PagingSource<Int, CharacterDomain>() {
+class CharactersPager(private val characterRemoteServer: CharacterRemoteServer) : PagingSource<Int, Character>() {
 
     private val TAG = "CharactersPager"
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterDomain> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         return try {
             val nextPage : Int = params.key ?: 1
             val result = characterRemoteServer.getCharacters(nextPage)
@@ -25,10 +24,11 @@ class CharactersPager(private val characterRemoteServer: CharacterRemoteServer) 
                 nextPageNumber = nextPageQuery?.toInt()
             }
 
-            val responseMapped = result.results.map{ character: CharacterModel ->
-                CharacterDomain(character.id, character.name, character.status, character.species, character.formatAvatarUrl(character.photo))
+            val responseWithUrlMapped = result.results.map { character: Character ->
+                Character(character.id, character.name, character.status, character.species, character.formatAvatarUrl(character.photoUrl), nextPage)
             }
-            LoadResult.Page(data = responseMapped, prevKey = null, nextKey = nextPageNumber)
+
+            LoadResult.Page(data = responseWithUrlMapped, prevKey = null, nextKey = nextPageNumber)
 
         }catch(e: Exception){
             e.message?.let { Log.e(TAG, it) }
@@ -36,7 +36,7 @@ class CharactersPager(private val characterRemoteServer: CharacterRemoteServer) 
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, CharacterDomain>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
         return state.anchorPosition
     }
 

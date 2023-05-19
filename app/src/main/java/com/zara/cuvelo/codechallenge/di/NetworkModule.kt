@@ -1,8 +1,9 @@
 package com.zara.cuvelo.codechallenge.di
 
+import com.zara.cuvelo.codechallenge.data.db.ZaraDatabase
 import com.zara.cuvelo.codechallenge.data.networking.CharacterRemoteServer
-import com.zara.cuvelo.codechallenge.data.networking.CharacterRemoteServerImpl
-import com.zara.cuvelo.codechallenge.repositories.datasources.RemoteCharactersDataSource
+import com.zara.cuvelo.codechallenge.data.networking.CharactersProviderPaginatorImpl
+import com.zara.cuvelo.codechallenge.repositories.datasources.CharactersProviderPaginator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,8 +36,8 @@ class NetworkModule {
         retrofit.create(CharacterRemoteServer::class.java)
 
     @Provides
-    fun provideRemoteDataSource(characterRemoteServer: CharacterRemoteServer ): RemoteCharactersDataSource {
-        return CharacterRemoteServerImpl(characterRemoteServer)
+    fun provideRemoteDataSource(characterRemoteServer: CharacterRemoteServer, zaraDatabase: ZaraDatabase ): CharactersProviderPaginator {
+        return CharactersProviderPaginatorImpl(characterRemoteServer,zaraDatabase )
     }
 
 }

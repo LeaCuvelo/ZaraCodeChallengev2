@@ -2,11 +2,11 @@ package com.zara.cuvelo.codechallenge.di
 
 import android.content.Context
 import androidx.room.Room
-import com.cuvelo.data.repositories.CharacterRepository
+import com.zara.cuvelo.codechallenge.repositories.repositories.CharacterRepository
 import com.zara.cuvelo.codechallenge.data.db.ZaraDatabase
 import com.zara.cuvelo.codechallenge.data.db.dao.CharacterDAO
 import com.zara.cuvelo.codechallenge.data.db.dao.RemoteKeysDao
-import com.zara.cuvelo.codechallenge.repositories.datasources.RemoteCharactersDataSource
+import com.zara.cuvelo.codechallenge.repositories.datasources.CharactersProviderPaginator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +23,6 @@ class DataModule {
     fun provideZaraDatabase(@ApplicationContext context: Context): ZaraDatabase =
         Room.databaseBuilder(context, ZaraDatabase::class.java, "zara_database").build()
 
-
     @Singleton
     @Provides
     fun provideCharacterDao(zaraDatabase: ZaraDatabase): CharacterDAO = zaraDatabase.getCharacterDao()
@@ -33,10 +32,7 @@ class DataModule {
     fun provideRemoteKeysDao(zaraDatabase: ZaraDatabase): RemoteKeysDao = zaraDatabase.getRemoteKeysDao()
 
     @Provides
-    fun provideCharacterRepository(/*localCharactersDataSource: LocalCharactersDataSource,*/
-                                   remoteCharactersDataSource: RemoteCharactersDataSource
-    ): CharacterRepository {
-
-        return CharacterRepository(/*localCharactersDataSource,*/ remoteCharactersDataSource)
+    fun provideCharacterRepository(remoteCharactersDataSource: CharactersProviderPaginator): CharacterRepository {
+        return CharacterRepository( remoteCharactersDataSource)
     }
 }
